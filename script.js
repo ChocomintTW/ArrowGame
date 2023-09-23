@@ -57,8 +57,16 @@ function generate() {
 	init(n);
 	for (let i = 0; i < n; i++) {
 		for (let j = 0; j < n; j++) {
-			for (let t = 0; t < Math.floor(Math.random() * 4) + 1; t++) {
-				turnByPositionIfValid(n, i, j, 4);
+			for (let t = 0; t < Math.floor(Math.random() * 3); t++) {
+   turnByPositionIfValid(n, i, j, 4);
+				turnByPositionIfValid(n, i - 1, j - 1, 4);
+	turnByPositionIfValid(n, i    , j - 1, 4);
+	turnByPositionIfValid(n, i + 1, j - 1, 4);
+	turnByPositionIfValid(n, i - 1, j    , 4);
+	turnByPositionIfValid(n, i + 1, j    , 4);
+	turnByPositionIfValid(n, i - 1, j + 1, 4);
+	turnByPositionIfValid(n, i    , j + 1, 4);
+	turnByPositionIfValid(n, i + 1, k + 1, 4);
 			}
 		}
 	}
