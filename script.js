@@ -25,15 +25,15 @@ function turnNeighbor(n, button) {
 	const parts = id.split(",");
 	const x = parseInt(parts[0].trim());
 	const y = parseInt(parts[1].trim());
-	turn(button, 8);
-	turnByPositionIfValid(n, x - 1, y - 1, 8);
-	turnByPositionIfValid(n, x    , y - 1, 8);
-	turnByPositionIfValid(n, x + 1, y - 1, 8);
-	turnByPositionIfValid(n, x - 1, y    , 8);
-	turnByPositionIfValid(n, x + 1, y    , 8);
-	turnByPositionIfValid(n, x - 1, y + 1, 8);
-	turnByPositionIfValid(n, x    , y + 1, 8);
-	turnByPositionIfValid(n, x + 1, y + 1, 8);
+	turn(button, 4);
+	turnByPositionIfValid(n, x - 1, y - 1, 4);
+	turnByPositionIfValid(n, x    , y - 1, 4);
+	turnByPositionIfValid(n, x + 1, y - 1, 4);
+	turnByPositionIfValid(n, x - 1, y    , 4);
+	turnByPositionIfValid(n, x + 1, y    , 4);
+	turnByPositionIfValid(n, x - 1, y + 1, 4);
+	turnByPositionIfValid(n, x    , y + 1, 4);
+	turnByPositionIfValid(n, x + 1, y + 1, 4);
 }
 
 function turn(btn, orientation) {
@@ -57,16 +57,16 @@ function generate() {
 	init(n);
 	for (let i = 0; i < n; i++) {
 		for (let j = 0; j < n; j++) {
-			for (let t = 0; t < Math.floor(Math.random() * 7); t++) {
-   turnByPositionIfValid(n, i, j, 8);
-				turnByPositionIfValid(n, i - 1, j - 1, 8);
-	turnByPositionIfValid(n, i    , j - 1, 8);
-	turnByPositionIfValid(n, i + 1, j - 1, 8);
-	turnByPositionIfValid(n, i - 1, j    , 8);
-	turnByPositionIfValid(n, i + 1, j    , 8);
-	turnByPositionIfValid(n, i - 1, j + 1, 8);
-	turnByPositionIfValid(n, i    , j + 1, 8);
-	turnByPositionIfValid(n, i + 1, j + 1, 8);
+			for (let t = 0; t < Math.floor(Math.random() * 3); t++) {
+   turnByPositionIfValid(n, i, j, 4);
+				turnByPositionIfValid(n, i - 1, j - 1, 4);
+	turnByPositionIfValid(n, i    , j - 1, 4);
+	turnByPositionIfValid(n, i + 1, j - 1, 4);
+	turnByPositionIfValid(n, i - 1, j    , 4);
+	turnByPositionIfValid(n, i + 1, j    , 4);
+	turnByPositionIfValid(n, i - 1, j + 1, 4);
+	turnByPositionIfValid(n, i    , j + 1, 4);
+	turnByPositionIfValid(n, i + 1, j + 1, 4);
 			}
 		}
 	}
@@ -77,7 +77,7 @@ function updateArrow(n) {
 	for (let i = 0; i < n; i++) {
 		for (let j = 0; j < n; j++) {
 			const btn = document.getElementById(i + "," + j);
-			btn.textContent = ["↑", "↗", "→", "↘", "↓", "↙", "←", "↖"][btn.getAttribute("direction") - 1]
+			btn.textContent = ["↑", "→", "↓",  "←"][btn.getAttribute("direction") - 1]
 		}
 	}
 }
