@@ -66,7 +66,7 @@ function generate() {
 	turnByPositionIfValid(n, i + 1, j    , 4);
 	turnByPositionIfValid(n, i - 1, j + 1, 4);
 	turnByPositionIfValid(n, i    , j + 1, 4);
-	turnByPositionIfValid(n, i + 1, k + 1, 4);
+	turnByPositionIfValid(n, i + 1, j + 1, 4);
 			}
 		}
 	}
