@@ -9,22 +9,21 @@ function init(n, orientations) {
 		for (let j = 0; j < n; j++) {
 			const button = document.createElement("button");
 			button.id = i + "," + j;
+			button.innerText = "↑";
 
 			button.style.width = w / n + "px";
 			button.style.height = w / n + "px";
 			button.style.borderRadius = w / (2 * n) + "px";
 			button.style.fontSize = w / (2.5 * n) + "px";
+			button.style.rotate = "0deg";
 			
-			button.setAttribute("direction", 1);
 			button.addEventListener("click", () => {
 				turnNeighbor(n, button, orientations);
-				updateArrow(n, orientations);
 			});
 			row.appendChild(button);
 		}
 		rowContainer.appendChild(row);
 	}
-	updateArrow(n, orientations);
 }
 
 function turnNeighbor(n, button, orientations) {
@@ -32,7 +31,7 @@ function turnNeighbor(n, button, orientations) {
 	const parts = id.split(",");
 	const x = parseInt(parts[0].trim());
 	const y = parseInt(parts[1].trim());
-	turnNeighborByPosition(n, x, y, orientations)
+	turnNeighborByPosition(n, x, y, orientations);
 }
 
 function turnNeighborByPosition(n, x, y, orientations) {
@@ -48,12 +47,8 @@ function turnNeighborByPosition(n, x, y, orientations) {
 }
 
 function turn(btn, orientations) {
-	const currentNumber = parseInt(btn.getAttribute("direction"));
-	if (currentNumber == orientations) {
-		btn.setAttribute("direction", 1);
-	} else {
-		btn.setAttribute("direction", currentNumber + 1);
-	}
+	var deg = parseInt(btn.style.rotate.replace("deg", ""));
+	btn.style.rotate = (deg + 360 / orientations) + "deg";
 }
 
 function turnByPositionIfValid(grid_n, x, y, orientations) {
@@ -68,27 +63,9 @@ function generate() {
 	init(n, orientations);
 	for (let i = 0; i < n; i++) {
 		for (let j = 0; j < n; j++) {
-			for (let t = 0; t < Math.floor(Math.random() * (orientations - 1)); t++) {
+			for (let t = 0; t < Math.floor(Math.random() * orientations); t++) {
 				turnNeighborByPosition(n, i, j, orientations);
 			}
 		}
 	}
-	updateArrow(n, orientations);
 }
-
-function updateArrow(n, orientations) {
-	var orientations_symbols = [];
-	if (orientations == 4) {
-		orientations_symbols = ["↑", "→", "↓", "←"]
-	} else if (orientations == 8) {
-		orientations_symbols = ["↑", "↗", "→", "↘", "↓", "↙", "←", "↖"]
-	}
-
-	for (let i = 0; i < n; i++) {
-		for (let j = 0; j < n; j++) {
-			const btn = document.getElementById(i + "," + j);
-			btn.textContent = orientations_symbols[btn.getAttribute("direction") - 1]
-		}
-	}
-}
-// ["⮝", "⮞", "⮟", "⮜"]

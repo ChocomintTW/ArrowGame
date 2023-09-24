@@ -18,6 +18,18 @@
 	padding: 5px;
 }
 
+#col-container {
+	border: 5px black solid;
+	padding: 5px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#col-container .col {
+
+}
+
 .button {
 	width: 500px;
 	height: 100px;

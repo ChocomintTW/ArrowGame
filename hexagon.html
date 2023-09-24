@@ -13,21 +13,22 @@
 				<div class="bar">
 					<p style="font-size: 30px;">大小:&nbsp;</p>
 					<select class="select" name="size" id="size">
+						<option value="3">3</option>
 						<option value="4">4</option>
 						<option value="5">5</option>
-						<option value="6">6</option>
 					</select>
 					
 					<p style="font-size: 30px;">&nbsp;&nbsp;&nbsp;方向數:&nbsp;</p>
 					<select class="select" name="orientation" id="orientation">
 						<option value="2">2</option>
+						<option value="3">3</option>
 						<option value="6">6</option>
 					</select>
 				</div>
 				<div style="height: 10pt;"></div>
 				<button class="button" onclick="generate()">隨機生成</button>
 				<div style="height: 30pt;"></div>
-				<div id="row-container" style="font-size: 200px; font-weight: bold; color: red;">未完成</div>
+				<div id="col-container"></div>
 				<div style="height: 50pt;"></div>
 				<div style="width: 100%; display: flex; flex-direction: row-reverse;">
 					<button onclick="window.location='index.html'" style="font-size: 30px; border-radius: 5pt; padding: 5pt;">切換至正方形</button>
